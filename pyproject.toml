@@ -1,0 +1,55 @@
+# Copyright 2023 Newmarket Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+[tool.poetry]
+name = "postal_code_json"
+version = "0.0.1"
+description = "日本郵便の郵便番号データからJSONの定義ファイルを自動生成する"
+
+license = "Apache License 2.0"
+
+authors = [
+    "Takahiro Hashimoto <t-hashimoto@newmarket.jp>"
+]
+
+readme = "README.md"
+
+repository = "https://github.com/postal_code_json"
+homepage = "https://github.com/postal_code_json"
+
+
+keywords = ["郵便番号"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"  # Compatible python versions must be declared here
+pandas = "^2.0.3"
+
+# Dependencies with extras
+requests = { version = "^2.28", extras = ["security"] }
+scrapy = "2.10.0"
+
+# Python specific dependencies with prereleases allowed
+tomli = { version = "^2.0.1", python = "<3.11", allow-prereleases = true }
+
+# Optional dependencies (extras)
+#pendulum = { version = "^2.1.2", optional = true }
+
+# Dependency groups
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.1.3"
+pytest-cov = "^3.0"
+
+[tool.poetry.group.docs.dependencies]
+Sphinx = "^5.1.1"
