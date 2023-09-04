@@ -78,6 +78,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "scrape_postal_code.pipelines.PostalCodesWriterPipeline": 1,
+    "scrape_postal_code.pipelines.PostalCodesMapWriterPipeline": 1
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

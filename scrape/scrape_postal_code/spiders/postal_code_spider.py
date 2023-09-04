@@ -275,6 +275,16 @@ class PostalCodeSpider(scrapy.Spider):
             if not key1 in postal_code_map.keys():
                 postal_code_map[key1] = [v]
             else:
-                postal_code_map[key1].append(v)
+                is_merged = False
+                for registed in postal_code_map[key1]:
+                    if registed["prefecture"] == v["prefecture"] and registed["city"] == v["city"] and registed["oaza"] == v["oaza"] and v["oaza_annotation"] is not None:
+                        if registed["oaza_annotation"] is None:
+                            registed["oaza_annotation"] = []
+                        for oa in v["oaza_annotation"]:
+                            registed["oaza_annotation"].append(oa)
+                        registed["oaza_original"] = registed["oaza_original"] + "," + v["oaza_original"]
+                        is_merged = True
+                if not is_merged:
+                    postal_code_map[key1].append(v)
 
         return postal_code_map
